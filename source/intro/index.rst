@@ -44,7 +44,6 @@ Le cours est organisé en cinq modules principaux :
 * :doc:`Module 2 <../part2/index>`: Évaluation pratique de la qualité d'applications
 * :doc:`Module 3 <../part3/index>`: Métriques logicielles
 * :doc:`Module 4 <../part4/index>`: Testabilité et Assurabilité dans les projets logiciels
-* :doc:`Module 5 <../part5/index>`: Évaluation croisée et amélioration continue
 
 
 Evaluation
