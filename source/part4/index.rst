@@ -131,7 +131,8 @@ Exercices théoriques
 =======================================
 
 .. note::
-   Vous devez faire ces exercices avant la prochaine séance.
+    Ces exercices de fin de module constituent une évaluation sommative essentielle. Leur réalisation complète et approfondie est requise pour valider les compétences du module.
+
 
 
 Exercice 1
