@@ -2,478 +2,242 @@
 
 
 *************************************************************************************************
-Chapitre 2 | Qualité d'un logiciel et la norme ISO9126
+Chapitre 2 | Évaluation pratique de la qualité d'applications
 *************************************************************************************************
 
 Objectifs
 =========
 
-A l'issue de cette partie chaque étudiant sera capable:
+À l'issue de ce module, chaque étudiant.e sera capable de :
 
-* de définir chaque critère et sous critère de la norme ISO9126.
-* de donner des exemples qui renvoie à chaque (sous) critère dans les logiciels de tous les jours
-* comprendre les processus d'assurance qualité
+* Définir précisément chaque critère et sous-critère de la norme ISO/IEC 9126
+* Identifier et donner des exemples concrets pour chaque (sous-)critère dans les logiciels du quotidien
+* Analyser un logiciel existant en appliquant systématiquement les critères de qualité
+* Construire un tableau d'évaluation complet selon la norme ISO/IEC 9126
+* Justifier l'évaluation de qualité par des arguments techniques pertinents
 
 
 Note de théorique
 =======================================
 
-la norme ISO9126 definit 06 critères de qualité:
+Rappel des 6 critères de la norme ISO/IEC 9126
+"""""""""""""""""""""""""""""""""""""""""""""""
 
-- la capacités fonctionnelle: attributs du logiciel à répondre aux specs (aptitude/pertinence, exactitude/conformité, sécurité)
-- la fiabilité: attributs du logiciel à maintenir un niveau de service sous certaines conditions(récupération après sinistre, tolérance au fautes, maturité)
-- la réutilisabilité: attributs du logiciel à présenter de 
+La norme ISO/IEC 9126 définit **6 critères de qualité logicielle**, chacun composé de plusieurs sous-critères :
 
-A lire
+
+1. Capacité fonctionnelle
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**Définition :** Attributs du logiciel relatifs à sa capacité à satisfaire les besoins exprimés par le client (spécifications).
+
+**Sous-critères :**
+
+* **Aptitude** : Présence et adéquation des fonctionnalités requises
+  
+  * *Exemple* : Dans WhatsApp, la fonctionnalité d'envoi de messages est présente et répond au besoin principal
+
+* **Exactitude** : Les résultats produits sont justes et corrects
+  
+  * *Exemple* : Quand j'envoie un message à quelqu'un via WhatsApp, il reçoit exactement le message envoyé
+
+* **Interopérabilité** : Capacité d'interaction avec d'autres applications
+  
+  * *Exemple* : WhatsApp fait des backups sur Google Drive ; utilisation d'API de paiement sur un site d'e-commerce
+  * *Note* : Ne pas considérer ce critère si l'interopérabilité ne concerne pas votre logiciel
+
+* **Sécurité** : Respect des contraintes de sécurité (par exemple respect des propriétés ACID)
+  
+  * *Exemple* : Authentification obligatoire pour accéder au logiciel
+  * *Note* : Il existe des normes spécifiques pour la sécurité (ISO/IEC 27001)
+
+
+2. Fiabilité
+^^^^^^^^^^^^
+
+**Définition :** Capacité du logiciel à inspirer la confiance et à maintenir un certain niveau de service selon des conditions données.
+
+**Sous-critères :**
+
+* **Maturité** : Capacité à s'exécuter correctement généralement (idéalement tout le temps)
+  
+  * *Mesure* : Fréquence des bugs rencontrés
+
+* **Tolérance aux fautes** : Capacité à maintenir un certain niveau de service même en présence de pannes
+  
+  * *Exemple* : Google Docs peut continuer à fonctionner en mode hors ligne dès que vous perdez la connexion
+
+* **Récupération après sinistre** : Capacité à reprendre le service après une panne ou un incident
+  
+  * *Exemple* : Word propose de récupérer votre document après un arrêt inopiné de l'ordinateur (auto-saving)
+
+
+3. Utilisabilité
+^^^^^^^^^^^^^^^^
+
+**Définition :** Effort nécessaire à la prise en main du logiciel par l'utilisateur.
+
+**Sous-critères :**
+
+* **Apprentissage** : Facilité et rapidité d'apprentissage du logiciel
+  
+  * *Questions à se poser* : En combien de temps peut-on apprendre ce logiciel ? Est-ce que le logiciel est facile à apprendre ?
+
+* **Compréhension** : Capacité à utiliser l'application sans documentation
+  
+  * *Exemple* : La plupart d'entre nous avons commencé avec Word sans documentation ni formation
+  * *Exemple* : Dans Google Meet, les icônes et les tooltips sont largement suffisants pour guider l'utilisateur
+
+* **Exploitation** : Facilité d'utilisation au quotidien
+
+
+4. Efficacité
+^^^^^^^^^^^^^
+
+**Définition :** Efficacité dans l'utilisation des ressources système.
+
+**Sous-critères :**
+
+* **Rapidité** : Performance en temps (complexité temporelle)
+  
+  * *Évaluation* : Le logiciel est-il lent ou rapide ? Quelle est sa complexité algorithmique ?
+  * *Exemple critique* : Un algorithme de complexité exponentielle pour une tâche courante
+
+* **Utilisation des ressources** : Utilisation optimale des ressources (mémoire, batterie, CPU, etc.)
+  
+  * *Exemples de problèmes* : Consomme trop de batterie, remplit la mémoire, utilisation excessive du CPU
+
+
+5. Maintenabilité
+^^^^^^^^^^^^^^^^^
+
+**Définition :** Effort nécessaire pour faire évoluer le logiciel.
+
+**Sous-critères :**
+
+* **Facilité d'analyse** : Capacité à diagnostiquer facilement les problèmes
+  
+  * *Exemple* : Le logiciel dispose de logs informatifs, de messages d'erreurs clairs ou de numéros de référence de bugs
+
+* **Facilité de modification** : Capacité à mettre à jour ou upgrader le logiciel
+  
+  * *Contre-exemple* : Code en un bloc, dupliqué, sans commentaires, sans fonctions, pas de modules, pas de classes, pas d'architecture
+  * *Bon exemple* : Code propre, bien commenté, testé, programmation défensive, POO, architecture en couches
+
+* **Testabilité** : Capacité du logiciel à se faire tester
+  
+  * *Principes* : Une fonction = une tâche simple, pas de duplication de code, découplage
+
+* **Stabilité** : Risque d'effets secondaires après modifications
+  
+  * *Évaluation* : Présence de "code smells" (mauvaises pratiques de programmation)
+
+
+6. Portabilité
+^^^^^^^^^^^^^^
+
+**Définition :** Effort nécessaire pour transférer le logiciel d'une plateforme à une autre.
+
+**Sous-critères :**
+
+* **Facilité d'installation** : Effort requis pour le déploiement
+  
+  * *Évaluation* : Le déploiement est-il simple ? Combien d'étapes sont nécessaires ?
+
+* **Interchangeabilité** : Capacité à remplacer un logiciel par un autre
+  
+  * *Exemple* : Un document .docx peut être ouvert avec Microsoft Word, Google Docs, LibreOffice
+  * *Notion importante* : Rétrocompatibilité
+
+* **Conformité/Adaptabilité** : Respect des normes de portabilité
+  
+  * *Exemple* : Le logiciel s'exécute sur plusieurs plateformes ou systèmes d'exploitation (Windows, macOS, Linux)
+
+
+Processus d'évaluation de la qualité
+"""""""""""""""""""""""""""""""""""""
+
+Pour évaluer la qualité d'un logiciel, suivez ces étapes :
+
+1. **Identifier le logiciel** à évaluer et son contexte d'utilisation
+2. **Parcourir systématiquement** chaque critère et sous-critère de la norme ISO/IEC 9126
+3. **Donner des exemples concrets** tirés du logiciel pour chaque sous-critère applicable
+4. **Justifier votre évaluation** avec des arguments techniques
+5. **Synthétiser** dans un tableau récapitulatif
+6. **Identifier les points forts** et **axes d'amélioration**
+
+
+Construction d'un tableau d'évaluation
+"""""""""""""""""""""""""""""""""""""""
+
+Votre tableau d'évaluation doit contenir :
+
+* **Critère** : Le critère principal (ex: Capacité fonctionnelle)
+* **Sous-critère** : Le sous-critère spécifique (ex: Aptitude)
+* **Définition** : Définition claire du sous-critère
+* **Exemple** : Exemple concret tiré du logiciel évalué
+* **Commentaire/Justification** : Votre analyse critique
+
+
+À lire / Aller plus loin
 =======================================
 
-Livre de référence:
-
-* Chapitre 1, section 1: quelques rappels de Java et la programmation en général
-* Chapitre 1, section 2: Abstraction de données
-* Chapitre 1, section 3: Piles, files, sacs, listes chainées
-* Chapitre 1, section 4: Analyses d'algorithmes
-
-Ainsi que ce document résumant les différentes notations de :ref:`part1complexity`.
-
-Slides (keynote)
-
-* `Introduction <https://www.icloud.com/keynote/0jTHGv9VcBJNqr701X0LiSSeQ#part1-intro>`_ 
-* `Séance Intermédiaire <https://www.icloud.com/keynote/037KCYIeXbULVFGRo7xLiY8fA#part1-exercices>`_ 
-* `Restructuration <https://www.icloud.com/keynote/0C9qyvWomr8eHMmHUELTMbC7A#part1-bilan>`_ 
+Slides du cours :
 
 
+Livres de référence :
 
-Exercices théoriques: première partie
+
+Aller plus loin :
+
+
+Exercices théoriques
 =======================================
 
 .. note::
-   Vous devez faire ces exercices pour le mercredi de S2.
+   Vous devez faire ces exercices avant la prochaine séance.
 
-Exercice 1.1.1
-""""""""""""""
+Exercice 1
+""""""""""""
 
-Définissez ce qu'est un type abstrait de données (TAD [#adt]_). En java, est-il préférable de décrire un TAD par une
-classe ou une interface ? Pourquoi ?
+Choisissez un logiciel que vous utilisez quotidiennement (application mobile, logiciel de bureautique, site web, etc.) et :
 
-Exercice 1.1.2
-""""""""""""""
+1. Construisez un tableau d'évaluation complet selon la norme ISO/IEC 9126
+2. Pour chaque sous-critère, donnez au moins un exemple concret tiré du logiciel
+3. Justifiez votre évaluation avec des arguments techniques précis
+4. Identifiez 3 points forts et 3 axes d'amélioration
 
-Comment faire pour implémenter une *pile* par une liste simplement chaînée où les opérations
-`push` et `pop` se font en **fin de liste** ? Cette solution est-elle efficace ? Argumentez.
 
-Exercice 1.1.3
-""""""""""""""
+Exercice 2
+""""""""""""
 
-Quelles sont les implémentations possibles pour une pile? En consultant la documentation sur l'API de Java, décrivez
-l'implémentation d'une pile par la classe `java.util.Stack`. Aller voir le code source de l'implémentation
-`java.util.Stack` (crtl+B depuis IntelliJ).
+Comparez deux logiciels similaires (ex: WhatsApp vs Telegram, Word vs Google Docs) :
 
-Pourquoi pensez-vous que les développeurs de Java ont choisi cette implémentation
-(hint: argumentez au niveau de la mémoire et du garbage collector)?
+1. Évaluez les deux logiciels selon les 6 critères de qualité
+2. Identifiez les différences majeures en termes de qualité
+3. Lequel répond le mieux aux critères de la norme ISO/IEC 9126 ? Justifiez
 
-Exercice 1.1.4
-""""""""""""""
 
-Comment faire pour implémenter le type abstrait de données *Pile* à l'aide de deux *files* ?
-Décrivez en particulier le fonctionnement des méthodes `push` et `pop` dans ce cas.
+Exercice 3
+""""""""""""
 
-A titre d'exemple, précisez l'état de chacune des deux files après avoir empilé les entiers `1 2 3` à partir d'une pile
-initialement vide. Décrivez ce qu'il se passe ensuite lorsque l'on effectue l'opération `pop`.
+Pour chacun des scénarios suivants, identifiez quel(s) critère(s) et sous-critère(s) de qualité sont concernés :
 
-Quelle est la complexité temporelle de ces méthodes si l'on suppose que chaque opération `enqueue` et `dequeue`
-s'exécute en temps constant?
+1. Une application bancaire mobile demande une authentification biométrique
+2. Un éditeur de texte sauvegarde automatiquement toutes les 30 secondes
+3. Une application de messagerie consomme 50% de la batterie en 2 heures
+4. Un logiciel de comptabilité ne peut pas importer de fichiers Excel
+5. Un jeu vidéo plante systématiquement après 1 heure de jeu
+6. Une application nécessite 3 jours de formation pour être utilisée correctement
+7. Un site web fonctionne uniquement sur Chrome et pas sur Firefox
+8. Le code source d'une application contient des fonctions de 500 lignes sans commentaires
 
-Cette implémentation d'une pile est-elle efficace (pour :math:`n` opérations)
-par rapport aux autres implémentations présentées dans le livre de référence ?
 
-Exercice 1.1.5
-""""""""""""""
+Exercice 4
+""""""""""""
 
-* Qu'est-ce qu'un iterateur en Java (`java.util.Iterator`)?
-* Pourquoi est-ce utile de définir une méthode `iterator()` sur les structures de données?
-* Que pensez vous de permettre la modification d'une structure de donnée alors qu'on est en train d'itérer sur celle-ci?
+Réflexion critique :
 
-Pour vous aider dans la réflexion, nous vous invitons à lire la spécification de l'API Java concernant la méthode
-`remove()`.
-
-Proposez une modification du code de l'iterateur de Stack qui lance une `java.util.ConcurrentModificationException`
-si le client modifie la collection avec un `push()` ou `pop()` durant l'itération. Est-ce une bonne idée de laisser
-l'implémentation de la méthode `remove()` vide si on ne désire pas permettre cette fonctionnalité?
-
-Exercice 1.1.6
-"""""""""""""""
-
-La notation :math:`\sim` (tilde) est utilisée dans le livre de référence pour l'analyse des temps de calcul des
-algorithmes. En quoi cette notation diffère ou ressemble aux notations plus classiquement utilisées :math:`\mathcal{O}`
-(big Oh), :math:`\mathcal{\Omega}` (big Omega) et :math:`\mathcal{\Theta}` (big Theta)?
-
-Expliquez précisément les liens et similitudes entre celles-ci.
-Que voyez-vous comme avantage à utiliser la notation :math:`\sim` (tilde) plutôt que :math:`\mathcal{O}`
-lorsque c'est possible?
-
-Exercice 1.1.7
-""""""""""""""
-
-Expliquez comment nous pouvons extraire la caractérisation :math:`\sim` (tilde) de l'implémentation d'un algorithme à
-l'aide du test *Doubling ratio*.
-
-* Comment fonctionne ce test?
-* Quelles sont les limites et avantages de ce test?
-
-Supposont que nous mesurons les temps d'exécutions :math:`T(n)` suivants (en secondes) d'un programme en fonction de la
-taille de l'entrée :math:`n`:
-
-============  ==== ==== ==== ==== ===== ===== =====
-:math:`n`     1000 2000 4000 8000 16000 32000 64000
-:math:`T(n)`  0    0    0.1  0.3  1.3   5.1   20.5
-============  ==== ==== ==== ==== ===== ===== =====
-
-* Comment pouvez-vous caractériser au mieux l'ordre de croissance de cette fonction ?
-* Que serait le temps d'exécution pour 128000?
-
-Exercices théoriques supplémentaires
-====================================
-
-.. note::
-    Ces exercices ne seront pas forcéments résolus en cours, ils restent néanmoins intéressants.
-    Si vous avez des problèmes avec ceux-ci, posez votre question lors d'un TP.
-
-Exercice 1.1b.1
-"""""""""""""""
-
-Que signifient les paramètres -Xmx, -Xms que l'on peut passer à la JVM pour l'exécution d'un bytecode?
-Est-ce que ces paramètres peuvent influencer la vitesse d'exécution d'un programme Java? Pourquoi?
-
-Exercice 1.1b.2
-"""""""""""""""
-
-* Qu'est-ce qu'un bon ensemble de tests unitaires pour vérifier l'exactitude d'une structure de données?
-* Pensez-vous aux cas limites?
-* Pensez-vous à la valeur maximale des entiers, doubles, etc?
-* En quoi la génération de données aléatoire peut être utile pour tester les structures de données?
-* Pourquoi est-ce important de travailler avec une semence (seed) fixée?
-* En quoi un outil d'analyse de couverture de code peut être utile (tel que `Jacoco <http://eclemma.org/jacoco/>`_)
-  pour vous aidez à concevoir des tests.
-* Comment vérifier expérimentalement que l'implémentation d'une structure de données ou un algorithme a
-  bien la complexité temporelle théorique attendue ?
-
-Exercices sur Inginious
-==========================================
-
-.. note::
-   Vous devez faire ces exercices pour le mercredi de S3.
-
-1. `Ecriture de tests unitaires pour une stack <https://inginious.info.ucl.ac.be/course/LSINF1121-2016/m1stacktests>`_
-2. `Implementation d'une stack avec structure chainée <https://inginious.info.ucl.ac.be/course/LSINF1121-2016/m1stack>`_ 
-3. `Implementation d'une liste chainée circulaire et d'un iterateur <https://inginious.info.ucl.ac.be/course/LSINF1121-2016/Part1CircularLinkedList>`_
-
-Exercices théorique: deuxième partie
-=======================================
-
-.. note::
-   Vous devez faire ces exercices pour le mercredi de S3.
-
-Exercice 1.2.1
-""""""""""""""
-
-Dans votre implémentation d'une liste chainée circulaire ci-dessous.
-Quelle est la complexité de la méthode
-
-
-* `public void enqueue(Item item)`?
-* `public Item remove(int index)` ?
-* d'une séquence d'operations qui consiste à *créer un iterateur et ensuite itérer sur les k-premiers elements* ?
-
-.. code-block:: java
-
-
-   import java.util.ConcurrentModificationException;
-   import java.util.Iterator;
-   import java.util.NoSuchElementException;
-
-   public class CircularLinkedList<Item> implements Iterable<Item> {
-    private long nOp = 0; // count the number of operations
-    private int n;          // size of the stack
-    private Node  last;   // trailer of the list
-
-    // helper linked list class
-    private class Node {
-        private Item item;
-        private Node next;
-    }
-
-    public CircularLinkedList() {
-        last = new Node(); // dummy node
-        last.next = last;
-        n = 1;
-    }
-
-    public boolean isEmpty() { return n == 1; }
-
-    public int size() { return n-1; }
-
-    private long nOp() { return nOp; }
-
-    /**
-     * Append an item at the end of the list
-     * @param item the item to append
-     */
-    public void enqueue(Item item) {
-        // TODO STUDENT: Implement add method
-    }
-
-    /**
-     * Removes the element at the specified position in this list.
-     * Shifts any subsequent elements to the left (subtracts one from their indices).
-     * Returns the element that was removed from the list.
-     */
-    public Item remove(int index) {
-        // TODO STUDENT: Implement remove method
-    }
-
-    /**
-     * Returns an iterator that iterates through the items in FIFO order.
-     * @return an iterator that iterates through the items in FIFO order.
-     */
-    public Iterator<Item> iterator() {
-        return new ListIterator();
-    }
-
-    /**
-     * Implementation of an iterator that iterates through the items in FIFO order.
-     *
-     */
-    private class ListIterator implements Iterator<Item> {
-        // TODO STUDENT: Implement the ListIterator
-    }
-
-   }
-
-Exercice 1.2.2
-""""""""""""""
-La notation post-fixe (ou `polonaise inverse <https://fr.wikipedia.org/wiki/Notation_polonaise_inverse>`_) est utilisée
-pour représenter des expressions algébriques.
-Nous ne considérons pour simplifier que des expressions post-fixes avec des entiers positifs
-et les opérateurs `+` et `*`. Par exemple `2 3 1 * + 9 *` dont le résultat vaut 45
-et le résultat de `4 20 + 3 5 1 * * +` est 39.
-
-1. Ecrivez un algorithme en Java pour évaluer une expression post-fixe au départ d'une chaine de n-caractères.
-2. Quelle structure de donnée utilisez vous ?
-3. Quelle est la complexité de votre algorithme (temporelle et spatiale) ?
-
-Pour rappel, voici comment on peut itérer sur les elements d'une chaine qui sont séparés par des espaces.
-
-.. code-block:: java
-
-
-    String in = "4 20 + 3 5 1 * * +";
-    StringTokenizer tokenizer = new StringTokenizer(in);
-    while (tokenizer.hasMoreTokens()) {
-         String element = tokenizer.nextToken();
-    }
-
-
-Exercice 1.2.3
-""""""""""""""
-
-La `programmation fonctionnelle <https://fr.wikipedia.org/wiki/Programmation_fonctionnelle>`_ est un paradigme de programmation de plus en plus important.
-Dans ce paradigme de programmation, les structures de données sont `immutables <https://en.wikipedia.org/wiki/Purely_functional_data_structure>`_ .
-Nous nous intéressons ici à l'implémentation d'une liste immutable appelée *FList* permettant d'être utilisée dans un cadre fonctionnel.
-Voici l'API d'une *FList*
-
-.. code-block:: java
-
-
-    public abstract class FList<A> implements Iterable<A> {
-
-        // creates an empty list
-        public static <A> FList<A> nil();
-
-        // prepend a to the list and return the new list
-        public final FList<A> cons(final A a);
-
-        public final boolean isNotEmpty();
-
-        public final boolean isEmpty();
-
-        public final int length();
-
-        // return the head element of the list
-        public abstract A head();
-
-        // return the tail of the list
-        public abstract FList<A> tail();
-
-        // return a list on which each element has been applied function f
-        public final <B> FList<B> map(Function<A,B> f);
-
-        // return a list on which only the elements that satisfies predicate are kept
-        public final FList<A> filter(Predicate<A> f);
-
-        // return an iterator on the element of the list
-        public Iterator<A> iterator();
-
-    }
-
-
-Comme vous pouvez vous en rendre compte, aucune des méthodes ne permet de modifier l'état de la liste.
-Voici un exemple de manipulation d'une telle liste.
-Si vous n'êtes pas familiers avec les `interfaces fonctionnelles <https://docs.oracle.com/javase/8/docs/api/java/util/function/package-summary.html>`_  de Java8, 
-nous vous demandons de vous familiariser d'abord avec celles-ci.
-
-
-
-.. code-block:: java
-
-
-        FList<Integer> list = FList.nil();
-
-        for (int i = 0; i < 10; i++) {
-            list = list.cons(i);
-        }
-
-        list = list.map(i -> i+1);
-        // will print 1,2,...,11
-        for (Integer i: list) {
-            System.out.println(i);
-        }
-
-        list = list.filter(i -> i%2 == 0);
-        // will print 2,4,6,...,10
-        for (Integer i: list) {
-            System.out.println(i);
-        }
-
-
-Voici une implémentation partielle de la `FList`
-
-
-.. code-block:: java
-
-
-        import java.util.Iterator;
-        import java.util.NoSuchElementException;
-        import java.util.function.Function;
-        import java.util.function.Predicate;
-
-        public abstract class FList<A> implements Iterable<A> {
-
-            public final boolean isNotEmpty() {
-                return this instanceof Cons;
-            }
-
-            public final boolean isEmpty() {
-                return this instanceof Nil;
-            }
-
-            public final int length() {
-                // TODO
-            }
-
-            public abstract A head();
-
-            public abstract FList<A> tail();
-
-            public static <A> FList<A> nil() {
-                return (Nil<A>) Nil.INSTANCE;
-            }
-
-            public final FList<A> cons(final A a) {
-                return new Cons(a, this);
-            }
-
-            public final <B> FList<B> map(Function<A,B> f) {
-                // TODO
-            }
-
-            public final FList<A> filter(Predicate<A> f) {
-                // TODO
-            }
-
-
-            public Iterator<A> iterator() {
-                return new Iterator<A>() {
-                    // complete this class
-
-
-                    public boolean hasNext() {
-                      // TODO
-                    }
-
-                    public A next() {
-                      // TODO
-                    }
-
-                    public void remove() {
-                        throw new UnsupportedOperationException();
-                    }
-                };
-            }
-
-
-            private static final class Nil<A> extends FList<A> {
-                public static final Nil<Object> INSTANCE = new Nil();
-                // TODO
-            }
-
-            private static final class Cons<A> extends FList<A> {
-                // TODO
-            }
-
-
-        }
-
-
-Nous vous demandons de 
-
-
-* compléter cette implémentation, si possible utilisez autant que possible des méthodes récursives.
-* déterminer la complexité de chacune des méthodes.
-
-
-Ressources supplémentaires
-==========================
-
-.. toctree::
-   :maxdepth: 1
-
-   complexity
-
-.. Indices and tables
-.. ==================
-
-.. * :ref:`genindex`
-.. * :ref:`modindex`
-.. * :ref:`search`
-
-.. rubric:: Notes de bas de page
-
-.. [#adt] *abstract data type* (ADT) en anglais
-
-..
-    Vieille questions
-
-    - Comment faire en Java pour lire des données textuelles depuis un fichier et pour écrire des résultats
-    dans un fichier ASCII ?
-    Écrivez en Java une méthode générique*, c'est-à-dire aussi indépendante que possible de son utilisation
-    dans un contexte particulier, de lecture depuis un fichier texte.  Faites de même pour l'écriture dans un fichier ASCII.
-
-    - Comment faire en Java pour passer des arguments à un programme ? Soyez précis. Donnez un exemple
-
-    Code example
-
-    .. code-block:: java
-
-        b = true , x = 4, c = 5
-        b = false, x = 4, c = 2
-
-
-    Link example `IsLessOrEqualTest.java <https://bitbucket.org/minicp/minicp/src/HEAD/src/test/java/minicp/engine/constraints/IsEqualTest.java?at=master>`_
-
-    Image example
-
-    .. image:: dfs.svg
-        :scale: 50
-        :width: 250
-        :alt: DFS
+1. Est-il possible qu'un logiciel soit excellent sur certains critères et mauvais sur d'autres ? Donnez un exemple
+2. Selon vous, quel est le critère le plus important ? Justifiez votre réponse
+3. Comment la norme ISO/IEC 9126 peut-elle aider dans le développement de nouveaux logiciels ?
