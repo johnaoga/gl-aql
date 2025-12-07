@@ -5,7 +5,7 @@
 
 
 #############################################
-AQL-M-IFRI: Assurance et QualitŽ de Logiciels
+AQL-M-IFRI: Assurance et Qualitï¿½ de Logiciels
 #############################################
 
 .. toctree::
@@ -17,7 +17,6 @@ AQL-M-IFRI: Assurance et QualitŽ de Logiciels
    part3/index
    part4/index
    part5/index
-   part6/index
 
 .. Indices and tables
 .. ==================
