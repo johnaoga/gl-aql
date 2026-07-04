@@ -1,0 +1,440 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapitre 5 : Point Fonction &amp; métriques de Bang (De Marco) &mdash; AQL 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/quiz.css?v=b9db772e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+      <script src="../_static/quiz.js?v=3a330e9a"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapitre 6 : Métriques orientées objet (Chidamber &amp; Kemerer)" href="chap6.html" />
+    <link rel="prev" title="Chapitre 4 : Complexité — McCabe &amp; Big O" href="chap4.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AQL
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenu du cours</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Organisation du cours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part1/index.html">Partie 1 | Préliminaires</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Partie 2 | Les mesures</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#vue-d-ensemble">Vue d’ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#objectifs">Objectifs</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#organisation">Organisation</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="chap3.html">Chapitre 3 : Les modèles et les mesures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chap4.html">Chapitre 4 : Complexité — McCabe &amp; Big O</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Chapitre 5 : Point Fonction &amp; métriques de Bang (De Marco)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#le-point-fonction-function-point-analysis">Le Point Fonction (Function Point Analysis)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#les-metriques-de-bang-de-marco">Les métriques de Bang (De Marco)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="chap6.html">Chapitre 6 : Métriques orientées objet (Chidamber &amp; Kemerer)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chap7.html">Chapitre 7 : Cohésion &amp; couplage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chap8.html">Chapitre 8 : Récapitulatif</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../part3/index.html">Partie 3 | Projet : Assurance et Testabilité de la Qualité des Logiciels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part6/index.html">QCM - Questionnaires d’auto-évaluation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AQL</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Partie 2 | Les mesures</a></li>
+      <li class="breadcrumb-item active">Chapitre 5 : Point Fonction &amp; métriques de Bang (De Marco)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/part2/chap5.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="chapitre-5-point-fonction-metriques-de-bang-de-marco">
+<span id="part2-chap5"></span><h1>Chapitre 5 : Point Fonction &amp; métriques de Bang (De Marco)<a class="headerlink" href="#chapitre-5-point-fonction-metriques-de-bang-de-marco" title="Link to this heading"></a></h1>
+<p>Les métriques logicielles visent à <strong>mesurer, estimer et comparer</strong> des systèmes.
+Ici deux approches opposées :</p>
+<ul class="simple">
+<li><p>le <strong>Point Fonction (FPA)</strong> — métrique de <strong>taille fonctionnelle</strong> ⇒ capacité fonctionnelle ;</p></li>
+<li><p>les <strong>métriques de Bang (De Marco)</strong> — <strong>complexité structurelle du code</strong> ⇒ rendement.</p></li>
+</ul>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50.0%" />
+<col style="width: 25.0%" />
+<col style="width: 25.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Critère</p></th>
+<th class="head"><p>Point Fonction</p></th>
+<th class="head"><p>Métriques de Bang</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Dépend du code</p></td>
+<td><p>Non</p></td>
+<td><p>Oui</p></td>
+</tr>
+<tr class="row-odd"><td><p>Dépend du langage</p></td>
+<td><p>Non</p></td>
+<td><p>Oui</p></td>
+</tr>
+<tr class="row-even"><td><p>Mesure la complexité technique</p></td>
+<td><p>Non</p></td>
+<td><p>Oui</p></td>
+</tr>
+<tr class="row-odd"><td><p>Tient compte des spécifications (cahier des charges, fiche technique)</p></td>
+<td><p>Oui</p></td>
+<td><p>Non</p></td>
+</tr>
+<tr class="row-even"><td><p>Mesure la taille fonctionnelle</p></td>
+<td><p>Oui</p></td>
+<td><p>Non</p></td>
+</tr>
+<tr class="row-odd"><td><p>Point de vue</p></td>
+<td><p>Utilisateur</p></td>
+<td><p>Technique / développeur</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Chapitre présenté en <strong>exposé</strong>.</p>
+</div>
+<section id="le-point-fonction-function-point-analysis">
+<h2>Le Point Fonction (Function Point Analysis)<a class="headerlink" href="#le-point-fonction-function-point-analysis" title="Link to this heading"></a></h2>
+<p>Le <strong>Point Fonction (PF)</strong> mesure la <strong>taille fonctionnelle</strong> d’un logiciel —
+<em>ce que le système fait pour l’utilisateur</em>, indépendamment de la solution
+technique. Il est donc :</p>
+<ul class="simple">
+<li><p>indépendant du <strong>langage</strong> ;</p></li>
+<li><p>indépendant de l’<strong>architecture</strong> ;</p></li>
+<li><p>indépendant du <strong>nombre de lignes de code</strong> ;</p></li>
+<li><p>basé <strong>uniquement sur les spécifications fonctionnelles</strong>.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Deux implémentations techniques différentes d’un même besoin utilisateur ont
+<strong>le même nombre de points fonction</strong>.</p>
+</div>
+<p>Le calcul repose sur cinq types de fonctions.</p>
+<p><strong>Fonctions transactionnelles</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 12.0%" />
+<col style="width: 30.0%" />
+<col style="width: 58.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Nom</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>EI</strong></p></td>
+<td><p>External Input</p></td>
+<td><p>Entrée de données modifiant un état interne</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>EO</strong></p></td>
+<td><p>External Output</p></td>
+<td><p>Sortie avec traitement ou calcul</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>EQ</strong></p></td>
+<td><p>External Inquiry</p></td>
+<td><p>Requête simple sans mise à jour</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Fonctions de données</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 12.0%" />
+<col style="width: 30.0%" />
+<col style="width: 58.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Nom</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>ILF</strong></p></td>
+<td><p>Internal Logical File</p></td>
+<td><p>Données internes maintenues par le système</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>EIF</strong></p></td>
+<td><p>External Interface File</p></td>
+<td><p>Données externes référencées</p></td>
+</tr>
+</tbody>
+</table>
+<section id="ponderations-standard-ifpug">
+<h3>Pondérations standard (IFPUG)<a class="headerlink" href="#ponderations-standard-ifpug" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 28.0%" />
+<col style="width: 24.0%" />
+<col style="width: 24.0%" />
+<col style="width: 24.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Faible</p></th>
+<th class="head"><p>Moyen</p></th>
+<th class="head"><p>Élevé</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>EI</p></td>
+<td><p>3</p></td>
+<td><p>4</p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-odd"><td><p>EO</p></td>
+<td><p>4</p></td>
+<td><p>5</p></td>
+<td><p>7</p></td>
+</tr>
+<tr class="row-even"><td><p>EQ</p></td>
+<td><p>3</p></td>
+<td><p>4</p></td>
+<td><p>6</p></td>
+</tr>
+<tr class="row-odd"><td><p>ILF</p></td>
+<td><p>7</p></td>
+<td><p>10</p></td>
+<td><p>15</p></td>
+</tr>
+<tr class="row-even"><td><p>EIF</p></td>
+<td><p>5</p></td>
+<td><p>7</p></td>
+<td><p>10</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="classification-det-ftr-ret">
+<h3>Classification : DET, FTR, RET<a class="headerlink" href="#classification-det-ftr-ret" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.0%" />
+<col style="width: 36.0%" />
+<col style="width: 26.0%" />
+<col style="width: 24.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Notion</p></th>
+<th class="head"><p>Définition</p></th>
+<th class="head"><p>Exemple</p></th>
+<th class="head"><p>Contre-exemple</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>DET</strong> (Data Element Type)</p></td>
+<td><p>Champ élémentaire reconnu par l’utilisateur, non dérivé automatiquement</p></td>
+<td><p>nom, prénom, date, statut, montant, code</p></td>
+<td><p>index, clés étrangères, champs calculés/techniques invisibles</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>FTR</strong> (File Type Reference)</p></td>
+<td><p>un ILF ou EIF lu/modifié par une fonction transactionnelle</p></td>
+<td></td>
+<td><p>fichiers de config, logs d’erreurs</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>RET</strong> (Record Element Type)</p></td>
+<td><p>un sous-ensemble logique reconnu par l’utilisateur</p></td>
+<td><p>Facture (ligne de facture), commande (ligne de commande)</p></td>
+<td><p>client (client de base, adresse)</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Classification des EI</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 28.0%" />
+<col style="width: 24.0%" />
+<col style="width: 24.0%" />
+<col style="width: 24.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>EI</p></th>
+<th class="head"><p>FTR = 0–1</p></th>
+<th class="head"><p>FTR = 2</p></th>
+<th class="head"><p>FTR ≥ 3</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>DET 1–4</p></td>
+<td><p>Faible</p></td>
+<td><p>Faible</p></td>
+<td><p>Moyen</p></td>
+</tr>
+<tr class="row-odd"><td><p>DET 5–15</p></td>
+<td><p>Faible</p></td>
+<td><p>Moyen</p></td>
+<td><p>Élevé</p></td>
+</tr>
+<tr class="row-even"><td><p>DET ≥ 16</p></td>
+<td><p>Moyen</p></td>
+<td><p>Élevé</p></td>
+<td><p>Élevé</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Classification des ILF</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 28.0%" />
+<col style="width: 24.0%" />
+<col style="width: 24.0%" />
+<col style="width: 24.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>ILF</p></th>
+<th class="head"><p>1–19 DET</p></th>
+<th class="head"><p>20–50 DET</p></th>
+<th class="head"><p>≥ 51 DET</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1 RET</p></td>
+<td><p>Faible</p></td>
+<td><p>Faible</p></td>
+<td><p>Moyen</p></td>
+</tr>
+<tr class="row-odd"><td><p>2–5 RET</p></td>
+<td><p>Faible</p></td>
+<td><p>Moyen</p></td>
+<td><p>Élevé</p></td>
+</tr>
+<tr class="row-even"><td><p>≥ 6 RET</p></td>
+<td><p>Moyen</p></td>
+<td><p>Élevé</p></td>
+<td><p>Élevé</p></td>
+</tr>
+</tbody>
+</table>
+<div class="tip admonition">
+<p class="admonition-title">Exemple — ILF <em>Commande</em></p>
+<p>RET : <em>Commande</em> (numéro, date, client, total, adresse) + <em>Ligne de commande</em>
+(produit, quantité, prix, TVA, total) → <strong>2 RET</strong> ; <strong>12 DET</strong> ⇒ complexité
+<strong>faible</strong> ⇒ contribution <strong>7 PF</strong>.</p>
+</div>
+</section>
+<section id="calcul-du-nombre-de-points-fonction">
+<h3>Calcul du nombre de points fonction<a class="headerlink" href="#calcul-du-nombre-de-points-fonction" title="Link to this heading"></a></h3>
+<p>Nombre de fonctions non ajusté (UFC) :</p>
+<div class="math notranslate nohighlight">
+\[UFC = \sum_{i} (\text{nombre de fonctions}_i \times \text{poids}_i)\]</div>
+<p>Facteur de complexité technique (TFC), basé sur <strong>14 caractéristiques générales</strong>
+notées de 0 à 5 :</p>
+<div class="math notranslate nohighlight">
+\[TFC = 0.65 + 0.01 \times \sum_{i=1}^{14} GSC_i\]</div>
+<p>Point Fonction final :</p>
+<div class="math notranslate nohighlight">
+\[PF = UFC \times TFC\]</div>
+</section>
+</section>
+<section id="les-metriques-de-bang-de-marco">
+<h2>Les métriques de Bang (De Marco)<a class="headerlink" href="#les-metriques-de-bang-de-marco" title="Link to this heading"></a></h2>
+<p>Ensemble de mesures basées sur la <strong>théorie des graphes</strong>, du <strong>point de vue
+technique (code)</strong> :</p>
+<ul class="simple">
+<li><p>mesurent la <strong>complexité structurelle</strong> et la <strong>connectivité</strong> d’un programme ;</p></li>
+<li><p>permettent d’identifier les <strong>zones à risque</strong> ;</p></li>
+<li><p>deux catégories : métriques de <strong>complexité</strong> (lignes de code, variables,
+fonctions…) et métriques de <strong>connectivité</strong> (chemins, cycles…).</p></li>
+<li><p>exemples : <em>Cyclomatic Complexity</em> (CC), <em>Number of Lines of Code</em> (LOC),
+<em>Number of Modules</em> (NM).</p></li>
+</ul>
+</section>
+<section id="exercice">
+<h2>Exercice<a class="headerlink" href="#exercice" title="Link to this heading"></a></h2>
+<p>Soit le document de spécification détaillé du logiciel <strong>Silogic</strong> :</p>
+<ol class="arabic simple">
+<li><p>Calculez le <strong>Point Fonction</strong> : (a) le facteur de complexité technique (TFC) ; (b) le nombre de fonctions non ajusté (UFC).</p></li>
+<li><p>Calculez les <strong>métriques de Bang</strong> (fonctions, données) de ce système.</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="chap4.html" class="btn btn-neutral float-left" title="Chapitre 4 : Complexité — McCabe &amp; Big O" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="chap6.html" class="btn btn-neutral float-right" title="Chapitre 6 : Métriques orientées objet (Chidamber &amp; Kemerer)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, John Aoga.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

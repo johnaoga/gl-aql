@@ -1,0 +1,322 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapitre 3 : Les modèles et les mesures &mdash; AQL 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/quiz.css?v=b9db772e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+      <script src="../_static/quiz.js?v=3a330e9a"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapitre 4 : Complexité — McCabe &amp; Big O" href="chap4.html" />
+    <link rel="prev" title="Partie 2 | Les mesures" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AQL
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenu du cours</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Organisation du cours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part1/index.html">Partie 1 | Préliminaires</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Partie 2 | Les mesures</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#vue-d-ensemble">Vue d’ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#objectifs">Objectifs</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#organisation">Organisation</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Chapitre 3 : Les modèles et les mesures</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#objectifs">Objectifs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pourquoi-les-mesures-en-aql">Pourquoi les mesures en AQL ?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mesure">Mesure ?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#de-la-realite-a-la-mesure">De la réalité à la mesure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#l-approche-de-la-mesure">L’approche de la mesure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#echelle-d-une-mesure">Échelle d’une mesure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#les-metriques-de-qualite-vues-interne-et-externe">Les métriques de qualité : vues interne et externe</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="chap4.html">Chapitre 4 : Complexité — McCabe &amp; Big O</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chap5.html">Chapitre 5 : Point Fonction &amp; métriques de Bang (De Marco)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chap6.html">Chapitre 6 : Métriques orientées objet (Chidamber &amp; Kemerer)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chap7.html">Chapitre 7 : Cohésion &amp; couplage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chap8.html">Chapitre 8 : Récapitulatif</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../part3/index.html">Partie 3 | Projet : Assurance et Testabilité de la Qualité des Logiciels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part6/index.html">QCM - Questionnaires d’auto-évaluation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AQL</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Partie 2 | Les mesures</a></li>
+      <li class="breadcrumb-item active">Chapitre 3 : Les modèles et les mesures</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/part2/chap3.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="chapitre-3-les-modeles-et-les-mesures">
+<span id="part2-chap3"></span><h1>Chapitre 3 : Les modèles et les mesures<a class="headerlink" href="#chapitre-3-les-modeles-et-les-mesures" title="Link to this heading"></a></h1>
+<p>Pour évaluer la qualité sans subjectivité, il faut <strong>mesurer</strong>. Ce chapitre pose
+la théorie de la mesure (mesure, modèle, échelle) et son application à l’AQL.</p>
+<section id="objectifs">
+<h2>Objectifs<a class="headerlink" href="#objectifs" title="Link to this heading"></a></h2>
+<p>À la fin de ce chapitre, vous devez pouvoir :</p>
+<ul class="simple">
+<li><p>Expliquer pourquoi on mesure en AQL</p></li>
+<li><p>Distinguer <strong>mesure</strong> et <strong>calcul</strong>, et la notion de <strong>modèle</strong></p></li>
+<li><p>Identifier le <strong>type d’échelle</strong> d’une mesure</p></li>
+<li><p>Distinguer les métriques <strong>internes</strong> et <strong>externes</strong> de la qualité</p></li>
+</ul>
+</section>
+<section id="pourquoi-les-mesures-en-aql">
+<h2>Pourquoi les mesures en AQL ?<a class="headerlink" href="#pourquoi-les-mesures-en-aql" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Éviter la subjectivité</strong> dans l’évaluation des critères. Dire « mon logiciel
+est <em>mature (fiable)</em> » ne veut rien dire tant qu’on ne sait pas comment le
+comprendre ni si deux personnes parlent de la même chose.</p></li>
+<li><p><strong>Quantifier ou évaluer</strong> un critère/sous-critère : lui donner une valeur, une
+échelle, une référence.</p></li>
+</ul>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>« Mon logiciel est mature » ⇒ on mesure la fréquence de bugs par mois :
+    si #bugs &lt; 2 bugs/mois  alors  mature
+    sinon                          immature
+</pre></div>
+</div>
+<p>Ou en pourcentage :</p>
+<div class="math notranslate nohighlight">
+\[\text{maturité} = 1 - \frac{\text{nombre de bugs}}{\text{nombre d'utilisations}}\]</div>
+</section>
+<section id="mesure">
+<h2>Mesure ?<a class="headerlink" href="#mesure" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Mesure = quantification</strong> : donner une valeur à quelque chose dans une unité
+donnée (poids, distance, durée, …). Une mesure a une <strong>unité</strong> de référence
+(unités internationales : m, kg, … ; multiples / sous-multiples).</p></li>
+<li><p><strong>Mesure vs calcul</strong> :</p>
+<ul>
+<li><p><strong>Mesure</strong> = quantification <strong>directe</strong> (ex. cm) ;</p></li>
+<li><p><strong>Calcul</strong> = quantification <strong>indirecte</strong>, obtenue à partir de mesures (ex. 1 m = 100 cm).</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="de-la-realite-a-la-mesure">
+<h2>De la réalité à la mesure<a class="headerlink" href="#de-la-realite-a-la-mesure" title="Link to this heading"></a></h2>
+<p>Pour obtenir une mesure (la quantification d’une réalité), il faut passer par un
+<strong>modèle</strong> (un instrument).</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/realite-modele.png"><img alt="De la réalité à la mesure via un modèle" src="../_images/realite-modele.png" style="width: 70%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">On n’accède pas directement à la réalité : on passe par un modèle (instrument).</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Exemples :</p>
+<ul class="simple">
+<li><p>mesurer une <strong>distance</strong> → le modèle est la règle graduée qui donne des centimètres ;</p></li>
+<li><p>mesurer la <strong>maturité</strong> → le modèle est le comptage qui donne un nombre de bugs/mois.</p></li>
+</ul>
+</section>
+<section id="l-approche-de-la-mesure">
+<h2>L’approche de la mesure<a class="headerlink" href="#l-approche-de-la-mesure" title="Link to this heading"></a></h2>
+<p>Plutôt que de déduire directement les relations entre objets (souvent impossible),
+on passe par un <strong>modèle → mesure → calculs → interprétation</strong> pour retrouver les
+<strong>relations empiriques</strong> qui lient les objets.</p>
+<figure class="align-center" id="id2">
+<a class="reference internal image-reference" href="../_images/approche-mesure.png"><img alt="L'approche de la mesure" src="../_images/approche-mesure.png" style="width: 75%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">L’approche de la mesure : modèle, mesure, calcul, interprétation.</span><a class="headerlink" href="#id2" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="comment-valider-un-modele">
+<h3>Comment valider un modèle ?<a class="headerlink" href="#comment-valider-un-modele" title="Link to this heading"></a></h3>
+<p>On valide un modèle par l’<strong>expérimentation</strong> : le meilleur modèle est le plus
+<strong>fidèle</strong> à la réalité (celui qui préserve le mieux la relation entre réalité et
+représentation).</p>
+<ul class="simple">
+<li><p>Validation ⇒ <strong>performance</strong> (évaluer chaque modèle par rapport à la réalité) ;</p></li>
+<li><p>performance ⇒ <strong>expérimentation</strong> (collecter des données réelles et des mesures,
+puis confronter les deux).</p></li>
+</ul>
+</section>
+</section>
+<section id="echelle-d-une-mesure">
+<h2>Échelle d’une mesure<a class="headerlink" href="#echelle-d-une-mesure" title="Link to this heading"></a></h2>
+<p><strong>Échelle = modèle + système de relation empirique.</strong> On distingue cinq types :</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 18.0%" />
+<col style="width: 42.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Type d’échelle</p></th>
+<th class="head"><p>Définition</p></th>
+<th class="head"><p>Exemples</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Nominale</strong></p></td>
+<td><p>Classification par attribution de noms</p></td>
+<td><p>Masculin/féminin ; mature/pas mature ; vert/jaune/rouge</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Ordinale</strong></p></td>
+<td><p>Noms <strong>dont l’ordre importe</strong> (mutuellement exclusif, conjointement exhaustif)</p></td>
+<td><p>Mentions (TB, B, AB, P, …)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Intervalle</strong></p></td>
+<td><p>Classification répartie en distances basées sur des valeurs</p></td>
+<td><p>Mentions par intervalles (&lt; 4 ; 4 ≤ x ≤ 8 ; &gt; 8)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Ratio</strong></p></td>
+<td><p>Nombre relatif à une référence (probabilité, pourcentage)</p></td>
+<td><p>Zéro absolu (Kelvin) ; 80 % sûr, 60 % mature</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Absolue</strong></p></td>
+<td><p>Le nombre lui-même</p></td>
+<td><p>Nombre de bugs, de fautes, de lignes, de classes…</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="les-metriques-de-qualite-vues-interne-et-externe">
+<h2>Les métriques de qualité : vues interne et externe<a class="headerlink" href="#les-metriques-de-qualite-vues-interne-et-externe" title="Link to this heading"></a></h2>
+<p>Mesurer la qualité porte sur <strong>deux points de vue</strong>.</p>
+<ol class="arabic simple">
+<li><p><strong>Point de vue interne</strong> — spécification, conception, code et tests. Une bonne
+<strong>structure interne</strong> ⇒ une bonne qualité du produit-logiciel. Agir <em>en amont</em>
+sur la structure pour contrôler la qualité : c’est le cœur de l’<strong>assurabilité</strong>.</p></li>
+<li><p><strong>Point de vue externe</strong> — les attributs observables, par artefact :</p></li>
+</ol>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 22.0%" />
+<col style="width: 78.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Artefact</p></th>
+<th class="head"><p>Attributs (exemples)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Spécifications</strong></p></td>
+<td><p>Taille (nombre de fonctionnalités, de specs non fonctionnelles), réutilisation, redondance (autres façons de faire : raccourcis, menu contextuel…), modularité, fonctionnalité</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Conception</strong></p></td>
+<td><p>Taille, réutilisation, modularité, <strong>couplage</strong>, <strong>cohésion</strong>, fonctionnalité</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Code</strong></p></td>
+<td><p>Taille, réutilisation, modularité, <strong>couplage</strong>, <strong>cohésion</strong>, fonctionnalité, <strong>complexités</strong> (cyclomatique, Big O…), structure du flot de contrôle</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Test</strong></p></td>
+<td><p>Couverture, taille</p></td>
+</tr>
+</tbody>
+</table>
+<figure class="align-center" id="id3">
+<a class="reference internal image-reference" href="../_images/metriques-interne-externe.png"><img alt="Vues interne et externe des métriques" src="../_images/metriques-interne-externe.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Les attributs mesurables selon l’artefact (spécifications, conception, code, test).</span><a class="headerlink" href="#id3" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="../_images/metriques-vue-externe.png"><img alt="Métriques et qualité du produit" src="../_images/metriques-vue-externe.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Agir sur la structure interne pour contrôler la qualité externe du produit.</span><a class="headerlink" href="#id4" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>Les chapitres suivants détaillent les familles de métriques :
+<a class="reference internal" href="chap4.html"><span class="doc">McCabe &amp; Big O</span></a>, <a class="reference internal" href="chap5.html"><span class="doc">Point Fonction &amp; Bang</span></a>,
+<a class="reference internal" href="chap6.html"><span class="doc">métriques OO</span></a> et <a class="reference internal" href="chap7.html"><span class="doc">cohésion &amp; couplage</span></a>.</p>
+</section>
+<section id="exercice">
+<h2>Exercice<a class="headerlink" href="#exercice" title="Link to this heading"></a></h2>
+<p>Pour le sous-critère <strong>maturité</strong> d’une application que vous connaissez, proposez :
+un <strong>modèle</strong>, le <strong>type d’échelle</strong>, et une <strong>mesure</strong> chiffrée (ex. <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">−</span> <span class="pre">#bugs/#usages</span></code>
+sur 5 ans ⇒ 70 %, échelle <em>ratio</em>).</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Partie 2 | Les mesures" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="chap4.html" class="btn btn-neutral float-right" title="Chapitre 4 : Complexité — McCabe &amp; Big O" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, John Aoga.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

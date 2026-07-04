@@ -1,0 +1,227 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapitre 7 : Cohésion &amp; couplage &mdash; AQL 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/quiz.css?v=b9db772e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+      <script src="../_static/quiz.js?v=3a330e9a"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapitre 8 : Récapitulatif" href="chap8.html" />
+    <link rel="prev" title="Chapitre 6 : Métriques orientées objet (Chidamber &amp; Kemerer)" href="chap6.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AQL
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenu du cours</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Organisation du cours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part1/index.html">Partie 1 | Préliminaires</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Partie 2 | Les mesures</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#vue-d-ensemble">Vue d’ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#objectifs">Objectifs</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#organisation">Organisation</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="chap3.html">Chapitre 3 : Les modèles et les mesures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chap4.html">Chapitre 4 : Complexité — McCabe &amp; Big O</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chap5.html">Chapitre 5 : Point Fonction &amp; métriques de Bang (De Marco)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chap6.html">Chapitre 6 : Métriques orientées objet (Chidamber &amp; Kemerer)</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Chapitre 7 : Cohésion &amp; couplage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#la-cohesion">La cohésion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#le-couplage">Le couplage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pourquoi-ces-metriques-sont-importantes">Pourquoi ces métriques sont importantes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="chap8.html">Chapitre 8 : Récapitulatif</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../part3/index.html">Partie 3 | Projet : Assurance et Testabilité de la Qualité des Logiciels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part6/index.html">QCM - Questionnaires d’auto-évaluation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AQL</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Partie 2 | Les mesures</a></li>
+      <li class="breadcrumb-item active">Chapitre 7 : Cohésion &amp; couplage</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/part2/chap7.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="chapitre-7-cohesion-couplage">
+<span id="part2-chap7"></span><h1>Chapitre 7 : Cohésion &amp; couplage<a class="headerlink" href="#chapitre-7-cohesion-couplage" title="Link to this heading"></a></h1>
+<p>Deux propriétés structurelles fondamentales : la <strong>cohésion</strong> (à l’intérieur d’un
+module) et le <strong>couplage</strong> (entre modules). La règle d’or : <strong>forte cohésion,
+faible couplage</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Chapitre présenté en <strong>exposé</strong>.</p>
+</div>
+<section id="la-cohesion">
+<h2>La cohésion<a class="headerlink" href="#la-cohesion" title="Link to this heading"></a></h2>
+<p>La <strong>cohésion</strong> mesure à quel point les éléments d’un module (classe, composant)
+sont <strong>liés entre eux</strong>. Une <strong>cohésion élevée</strong> est préférable : le module est
+bien défini et ne fait <em>qu’une seule chose</em>. Elle favorise la <strong>maintenabilité</strong>,
+la <strong>compréhension</strong> et la <strong>réutilisation</strong>.</p>
+<dl>
+<dt><strong>LCOM (Lack of Cohesion in Methods)</strong></dt><dd><p>Mesure le <strong>manque</strong> de cohésion : le nombre de paires de méthodes qui ne
+partagent <strong>pas</strong> de variables/attributs.</p>
+<ul class="simple">
+<li><p><strong>LCOM = 0</strong> — meilleur cas (toutes les méthodes partagent des attributs) ;</p></li>
+<li><p><strong>LCOM = 1</strong> — bon (perte minimale de cohésion) ;</p></li>
+<li><p><strong>LCOM &gt; 1</strong> — mauvaise pratique : la classe pourrait être scindée en classes
+plus petites et plus cohésives.</p></li>
+</ul>
+</dd>
+<dt><strong>Cohésion de causalité</strong></dt><dd><p>Degré d’interdépendance entre les fonctions d’un module liées par une <strong>cause
+commune</strong> (même tâche/objectif). Élevée ⇒ plus facile à comprendre et maintenir.</p>
+<div class="math notranslate nohighlight">
+\[\text{cohésion de causalité} = \frac{\text{relations de cause à effet entre fonctions}}{\text{relations totales entre fonctions}}\]</div>
+</dd>
+</dl>
+</section>
+<section id="le-couplage">
+<h2>Le couplage<a class="headerlink" href="#le-couplage" title="Link to this heading"></a></h2>
+<p>Le <strong>couplage</strong> mesure l’interdépendance entre modules/classes/composants. Un
+<strong>faible couplage</strong> est préférable : un module indépendant peut être modifié sans
+affecter le reste. Il favorise la <strong>flexibilité</strong>, la <strong>réutilisation</strong>, la
+<strong>maintenance</strong> et la <strong>testabilité</strong>.</p>
+<dl class="simple">
+<dt><strong>CBO (Coupling Between Objects)</strong></dt><dd><p>Nombre de classes dont dépend directement une classe donnée. Démarche : identifier
+les classes → analyser les dépendances (références, appels) → compter, pour chaque
+classe, le nombre de classes directement liées. Plus le CBO est élevé, plus le
+couplage est fort (conception moins modulaire).</p>
+</dd>
+<dt><strong>Couplage entre modules</strong></dt><dd><p>Évalue la dépendance entre méthodes/modules (nombre de méthodes d’une classe
+appelées par d’autres). Un couplage élevé ⇒ complexité et interactions accrues.</p>
+</dd>
+</dl>
+<section id="graphe-de-couplage">
+<h3>Graphe de couplage<a class="headerlink" href="#graphe-de-couplage" title="Link to this heading"></a></h3>
+<p>Pour quantifier le couplage entre modules, on construit d’abord le <strong>graphe de
+couplage des modules</strong>, puis on applique :</p>
+<div class="math notranslate nohighlight">
+\[c(x, y) = i + \frac{n}{n+1}\]</div>
+<p>où <span class="math notranslate nohighlight">\(i\)</span> est la <strong>pire relation de couplage</strong> et <span class="math notranslate nohighlight">\(n\)</span> le <strong>nombre
+d’interconnexions</strong> entre <span class="math notranslate nohighlight">\(x\)</span> et <span class="math notranslate nohighlight">\(y\)</span>.</p>
+<figure class="align-center" id="id1">
+<a class="reference internal image-reference" href="../_images/couplage-graphe.png"><img alt="Graphe de couplage des modules" src="../_images/couplage-graphe.png" style="width: 70%;" />
+</a>
+<figcaption>
+<p><span class="caption-text">Le graphe de couplage entre modules.</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<div class="tip admonition">
+<p class="admonition-title">Exemple</p>
+<div class="math notranslate nohighlight">
+\[c(M_3, M_4) = 5 + \tfrac{3}{3+1} = 5{,}75 \qquad
+c(M_2, M_3) = 2 + \tfrac{5}{5+1} = 2{,}83 \qquad
+c(M_1, M_2) = 4 + \tfrac{2}{2+1} = 4{,}67\]</div>
+</div>
+</section>
+</section>
+<section id="pourquoi-ces-metriques-sont-importantes">
+<h2>Pourquoi ces métriques sont importantes<a class="headerlink" href="#pourquoi-ces-metriques-sont-importantes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Évaluer la <strong>qualité</strong> d’un logiciel ;</p></li>
+<li><p><strong>identifier</strong> des problèmes potentiels ;</p></li>
+<li><p><strong>guider</strong> la conception et le développement ;</p></li>
+<li><p><strong>quantifier</strong> des concepts abstraits (qualité de l’architecture, maintenabilité,
+flexibilité, réutilisabilité).</p></li>
+</ul>
+<div class="tip admonition">
+<p class="admonition-title">Lien avec ISO/IEC 9126</p>
+<p>Forte cohésion + faible couplage ⇒ <strong>maintenabilité</strong> (analyse, modification,
+stabilité, <strong>testabilité</strong>) et <strong>portabilité</strong> accrues.</p>
+</div>
+</section>
+<section id="exercice">
+<h2>Exercice<a class="headerlink" href="#exercice" title="Link to this heading"></a></h2>
+<p>Pour une petite application de votre choix (3–5 classes) : tracez le <strong>graphe de
+couplage</strong>, calculez <code class="docutils literal notranslate"><span class="pre">c(x,</span> <span class="pre">y)</span></code> pour deux paires de modules, et estimez le <strong>LCOM</strong>
+d’une classe. Proposez une amélioration (scinder, regrouper, abstraire).</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="chap6.html" class="btn btn-neutral float-left" title="Chapitre 6 : Métriques orientées objet (Chidamber &amp; Kemerer)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="chap8.html" class="btn btn-neutral float-right" title="Chapitre 8 : Récapitulatif" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, John Aoga.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
