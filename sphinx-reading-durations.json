@@ -1,0 +1,20 @@
+{
+    "index": 0.019,
+    "intro/index": 0.061,
+    "part1/chap0": 0.007,
+    "part1/chap1": 0.008,
+    "part1/chap2": 0.051,
+    "part1/index": 0.004,
+    "part2/chap3": 0.025,
+    "part2/chap4": 0.022,
+    "part2/chap5": 0.039,
+    "part2/chap6": 0.021,
+    "part2/chap7": 0.013,
+    "part2/chap8": 0.011,
+    "part2/index": 0.005,
+    "part3/index": 0.022,
+    "part6/index": 0.004,
+    "part6/quizzes/quiz1_qualite_iso": 0.001,
+    "part6/quizzes/quiz2_mesures": 0.001,
+    "part6/quizzes/quiz3_metriques": 0.001
+}

@@ -1,0 +1,146 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz 3 : Métriques logicielles &mdash; AQL 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/quiz.css?v=b9db772e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../../_static/quiz.js?v=3a330e9a"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Quiz 2 : Mesures &amp; échelles" href="quiz2_mesures.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            AQL
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenu du cours</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../intro/index.html">Organisation du cours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part1/index.html">Partie 1 | Préliminaires</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part2/index.html">Partie 2 | Les mesures</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../part3/index.html">Partie 3 | Projet : Assurance et Testabilité de la Qualité des Logiciels</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">QCM - Questionnaires d’auto-évaluation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#vue-d-ensemble">Vue d’ensemble</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#quizzes-disponibles">Quizzes disponibles</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="quiz1_qualite_iso.html">Quiz 1 : Qualité &amp; norme ISO/IEC 9126</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quiz2_mesures.html">Quiz 2 : Mesures &amp; échelles</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Quiz 3 : Métriques logicielles</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">AQL</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">QCM - Questionnaires d’auto-évaluation</a></li>
+      <li class="breadcrumb-item active">Quiz 3 : Métriques logicielles</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/part6/quizzes/quiz3_metriques.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="quiz-3-metriques-logicielles">
+<h1>Quiz 3 : Métriques logicielles<a class="headerlink" href="#quiz-3-metriques-logicielles" title="Link to this heading"></a></h1>
+<div class="quiz-container" id="quiz-quiz3_metriques">
+<form id="quiz-form-quiz3_metriques" onsubmit="return false;">
+<div class="quiz-question" data-qid="quiz3_metriques_0"> <p class="question-text"><strong>Q1.</strong> Quelle est la formule (graphique) de la complexité cyclomatique de McCabe ?</p> <div class="quiz-options"> <label class="quiz-option"> <input type="radio" name="qquiz3_metriques_0" value="0" /> <span>M = E − N + 2P</span> </label> <label class="quiz-option"> <input type="radio" name="qquiz3_metriques_0" value="1" /> <span>M = N − E + 2P</span> </label> <label class="quiz-option"> <input type="radio" name="qquiz3_metriques_0" value="2" /> <span>M = E + N − P</span> </label> <label class="quiz-option"> <input type="radio" name="qquiz3_metriques_0" value="3" /> <span>M = E − N − 2P</span> </label> </div> </div>
+<div class="quiz-question" data-qid="quiz3_metriques_1"> <p class="question-text"><strong>Q2.</strong> Quel maximum McCabe recommande-t-il par fonction ?</p> <div class="quiz-options"> <label class="quiz-option"> <input type="radio" name="qquiz3_metriques_1" value="0" /> <span>5</span> </label> <label class="quiz-option"> <input type="radio" name="qquiz3_metriques_1" value="1" /> <span>10</span> </label> <label class="quiz-option"> <input type="radio" name="qquiz3_metriques_1" value="2" /> <span>20</span> </label> <label class="quiz-option"> <input type="radio" name="qquiz3_metriques_1" value="3" /> <span>50</span> </label> </div> </div>
+<div class="quiz-question" data-qid="quiz3_metriques_2"> <p class="question-text"><strong>Q3.</strong> Lesquelles font partie des <strong>6 métriques CK</strong> (Chidamber & Kemerer) ?</p> <p class="question-hint"><em>(Plusieurs réponses possibles)</em></p> <div class="quiz-options"> <label class="quiz-option"> <input type="checkbox" name="qquiz3_metriques_2" value="0" /> <span>WMC</span> </label> <label class="quiz-option"> <input type="checkbox" name="qquiz3_metriques_2" value="1" /> <span>DIT</span> </label> <label class="quiz-option"> <input type="checkbox" name="qquiz3_metriques_2" value="2" /> <span>LCOM</span> </label> <label class="quiz-option"> <input type="checkbox" name="qquiz3_metriques_2" value="3" /> <span>LOC</span> </label> <label class="quiz-option"> <input type="checkbox" name="qquiz3_metriques_2" value="4" /> <span>CBO</span> </label> </div> </div>
+<div class="quiz-question" data-qid="quiz3_metriques_3"> <p class="question-text"><strong>Q4.</strong> Que mesure la notation <strong>Big O</strong> ?</p> <div class="quiz-options"> <label class="quiz-option"> <input type="radio" name="qquiz3_metriques_3" value="0" /> <span>La taille fonctionnelle</span> </label> <label class="quiz-option"> <input type="radio" name="qquiz3_metriques_3" value="1" /> <span>La croissance du temps/mémoire (efficacité)</span> </label> <label class="quiz-option"> <input type="radio" name="qquiz3_metriques_3" value="2" /> <span>La cohésion d&#x27;une classe</span> </label> <label class="quiz-option"> <input type="radio" name="qquiz3_metriques_3" value="3" /> <span>La profondeur d&#x27;héritage</span> </label> </div> </div>
+<div class="quiz-question" data-qid="quiz3_metriques_4"> <p class="question-text"><strong>Q5.</strong> Le <strong>Point Fonction</strong> est indépendant de…</p> <div class="quiz-options"> <label class="quiz-option"> <input type="radio" name="qquiz3_metriques_4" value="0" /> <span>des spécifications fonctionnelles</span> </label> <label class="quiz-option"> <input type="radio" name="qquiz3_metriques_4" value="1" /> <span>du langage et du code</span> </label> <label class="quiz-option"> <input type="radio" name="qquiz3_metriques_4" value="2" /> <span>du besoin utilisateur</span> </label> <label class="quiz-option"> <input type="radio" name="qquiz3_metriques_4" value="3" /> <span>des fonctionnalités</span> </label> </div> </div>
+<div class="quiz-question" data-qid="quiz3_metriques_5"> <p class="question-text"><strong>Q6.</strong> Un <strong>CBO élevé</strong> indique…</p> <div class="quiz-options"> <label class="quiz-option"> <input type="radio" name="qquiz3_metriques_5" value="0" /> <span>une forte cohésion</span> </label> <label class="quiz-option"> <input type="radio" name="qquiz3_metriques_5" value="1" /> <span>un couplage trop fort</span> </label> <label class="quiz-option"> <input type="radio" name="qquiz3_metriques_5" value="2" /> <span>une bonne portabilité</span> </label> <label class="quiz-option"> <input type="radio" name="qquiz3_metriques_5" value="3" /> <span>une faible complexité</span> </label> </div> </div>
+<div class="quiz-question" data-qid="quiz3_metriques_6"> <p class="question-text"><strong>Q7.</strong> Règle d'or : forte cohésion, ___ couplage. (un mot)</p> <input type="text" name="qquiz3_metriques_6" class="quiz-input" placeholder="Votre réponse..." /> </div>
+<div class="quiz-question" data-qid="quiz3_metriques_7"> <p class="question-text"><strong>Q8.</strong> Que mesure la métrique <strong>DIT</strong> ?</p> <div class="quiz-options"> <label class="quiz-option"> <input type="radio" name="qquiz3_metriques_7" value="0" /> <span>Le nombre d&#x27;enfants directs</span> </label> <label class="quiz-option"> <input type="radio" name="qquiz3_metriques_7" value="1" /> <span>La profondeur dans l&#x27;arbre d&#x27;héritage</span> </label> <label class="quiz-option"> <input type="radio" name="qquiz3_metriques_7" value="2" /> <span>Le nombre de méthodes</span> </label> <label class="quiz-option"> <input type="radio" name="qquiz3_metriques_7" value="3" /> <span>Le couplage entre objets</span> </label> </div> </div>
+<div class="quiz-question" data-qid="quiz3_metriques_8"> <p class="question-text"><strong>Q9.</strong> Quelle métrique adopte le <strong>point de vue utilisateur</strong> et ignore le code ?</p> <div class="quiz-options"> <label class="quiz-option"> <input type="radio" name="qquiz3_metriques_8" value="0" /> <span>Les métriques de Bang</span> </label> <label class="quiz-option"> <input type="radio" name="qquiz3_metriques_8" value="1" /> <span>Le Point Fonction</span> </label> <label class="quiz-option"> <input type="radio" name="qquiz3_metriques_8" value="2" /> <span>McCabe</span> </label> <label class="quiz-option"> <input type="radio" name="qquiz3_metriques_8" value="3" /> <span>CBO</span> </label> </div> </div>
+<div class="quiz-question" data-qid="quiz3_metriques_9"> <p class="question-text"><strong>Q10.</strong> Pour une classe au <strong>WMC trop élevé</strong> (structure trop complexe), quelles actions sont pertinentes ?</p> <p class="question-hint"><em>(Plusieurs réponses possibles)</em></p> <div class="quiz-options"> <label class="quiz-option"> <input type="checkbox" name="qquiz3_metriques_9" value="0" /> <span>Refactoring : scinder la classe</span> </label> <label class="quiz-option"> <input type="checkbox" name="qquiz3_metriques_9" value="1" /> <span>Réécrire / simplifier les méthodes</span> </label> <label class="quiz-option"> <input type="checkbox" name="qquiz3_metriques_9" value="2" /> <span>Ajouter du couplage</span> </label> <label class="quiz-option"> <input type="checkbox" name="qquiz3_metriques_9" value="3" /> <span>Augmenter la profondeur d&#x27;héritage</span> </label> </div> </div>
+</form>
+<div class="quiz-actions">
+<button type="button" class="quiz-btn quiz-btn-check" onclick="checkQuiz('quiz3_metriques')">✓ Vérifier mes réponses</button>
+<button type="button" class="quiz-btn quiz-btn-reset" onclick="resetQuiz('quiz3_metriques')">↺ Recommencer</button>
+</div>
+<div id="result-quiz3_metriques" class="quiz-result"></div>
+<div id="explanations-quiz3_metriques" class="quiz-explanations"></div>
+</div>
+<script>
+if (typeof window.quizData === 'undefined') window.quizData = {};
+window.quizData['quiz3_metriques'] = {"questions": [{"id": "quiz3_metriques_0", "type": "single", "answer": 0, "explanation": "M = E − N + 2P, avec E arêtes, N nœuds, P composantes connexes (P = 1 pour une seule fonction)."}, {"id": "quiz3_metriques_1", "type": "single", "answer": 1, "explanation": "McCabe propose 10 comme maximum : 1–10 simple, 11–20 modéré, 21–50 élevé, > 50 non testable."}, {"id": "quiz3_metriques_2", "type": "multiple", "answers": [0, 1, 2, 4], "explanation": "Les métriques CK : WMC, DIT, NOC, CBO, RFC, LCOM. LOC (lignes de code) n'en fait pas partie."}, {"id": "quiz3_metriques_3", "type": "single", "answer": 1, "explanation": "Big O décrit la croissance du temps d'exécution ou de la mémoire selon la taille des entrées (rendement)."}, {"id": "quiz3_metriques_4", "type": "single", "answer": 1, "explanation": "Le Point Fonction mesure la taille fonctionnelle : indépendant du langage, de l'architecture et du nombre de lignes de code ; il dépend des spécifications."}, {"id": "quiz3_metriques_5", "type": "single", "answer": 1, "explanation": "Le CBO (Coupling Between Objects) élevé signale un couplage fort : conception moins modulaire."}, {"id": "quiz3_metriques_6", "type": "text", "answer": "faible", "case_sensitive": false, "explanation": "On vise une forte cohésion et un faible couplage."}, {"id": "quiz3_metriques_7", "type": "single", "answer": 1, "explanation": "DIT (Depth of Inheritance Tree) = profondeur de la classe dans l'arbre d'héritage (nb max d'ancêtres)."}, {"id": "quiz3_metriques_8", "type": "single", "answer": 1, "explanation": "Le Point Fonction prend le point de vue utilisateur et est indépendant du code ; les métriques de Bang sont techniques (code)."}, {"id": "quiz3_metriques_9", "type": "multiple", "answers": [0, 1], "explanation": "Un WMC élevé (structure complexe) se traite par refactoring : scinder, réécrire. Ajouter du couplage ou de l'héritage aggraverait la situation."}]};
+</script></section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="quiz2_mesures.html" class="btn btn-neutral float-left" title="Quiz 2 : Mesures &amp; échelles" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, John Aoga.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

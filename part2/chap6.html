@@ -1,0 +1,292 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapitre 6 : Métriques orientées objet (Chidamber &amp; Kemerer) &mdash; AQL 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/quiz.css?v=b9db772e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="../_static/quiz.js?v=3a330e9a"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chapitre 7 : Cohésion &amp; couplage" href="chap7.html" />
+    <link rel="prev" title="Chapitre 5 : Point Fonction &amp; métriques de Bang (De Marco)" href="chap5.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            AQL
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contenu du cours</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro/index.html">Organisation du cours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part1/index.html">Partie 1 | Préliminaires</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Partie 2 | Les mesures</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="index.html#vue-d-ensemble">Vue d’ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="index.html#objectifs">Objectifs</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html#organisation">Organisation</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="chap3.html">Chapitre 3 : Les modèles et les mesures</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chap4.html">Chapitre 4 : Complexité — McCabe &amp; Big O</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chap5.html">Chapitre 5 : Point Fonction &amp; métriques de Bang (De Marco)</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Chapitre 6 : Métriques orientées objet (Chidamber &amp; Kemerer)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pourquoi-des-metriques-oo">Pourquoi des métriques OO ?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#les-6-metriques-ck">Les 6 métriques CK</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#interpreter-les-scores-et-agir">Interpréter les scores et agir</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#avantages-limites-difficulte-d-utilisation">Avantages, limites, difficulté d’utilisation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="chap7.html">Chapitre 7 : Cohésion &amp; couplage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chap8.html">Chapitre 8 : Récapitulatif</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../part3/index.html">Partie 3 | Projet : Assurance et Testabilité de la Qualité des Logiciels</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../part6/index.html">QCM - Questionnaires d’auto-évaluation</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">AQL</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Partie 2 | Les mesures</a></li>
+      <li class="breadcrumb-item active">Chapitre 6 : Métriques orientées objet (Chidamber &amp; Kemerer)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/part2/chap6.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="chapitre-6-metriques-orientees-objet-chidamber-kemerer">
+<span id="part2-chap6"></span><h1>Chapitre 6 : Métriques orientées objet (Chidamber &amp; Kemerer)<a class="headerlink" href="#chapitre-6-metriques-orientees-objet-chidamber-kemerer" title="Link to this heading"></a></h1>
+<p>Les métriques orientées objet évaluent <strong>le code et sa structure</strong>. Chidamber &amp;
+Kemerer ont proposé un ensemble de <strong>six métriques</strong> (les <strong>métriques CK</strong>)
+couvrant la complexité d’une classe ou d’un objet.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Chapitre présenté en <strong>exposé</strong>.</p>
+</div>
+<section id="pourquoi-des-metriques-oo">
+<h2>Pourquoi des métriques OO ?<a class="headerlink" href="#pourquoi-des-metriques-oo" title="Link to this heading"></a></h2>
+<p>Elles permettent de :</p>
+<ul class="simple">
+<li><p><strong>mesurer la qualité du code</strong> (complexité, couplage, cohésion, maintenabilité, lisibilité) ;</p></li>
+<li><p><strong>faciliter la maintenance</strong> (repérer le code complexe, peu cohésif ou fortement couplé) ;</p></li>
+<li><p><strong>prendre des décisions</strong> (réécriture, <strong>refactorisation</strong>, respect des normes) ;</p></li>
+<li><p><strong>améliorer la compréhensibilité</strong> (identifier le code difficile à comprendre).</p></li>
+</ul>
+</section>
+<section id="les-6-metriques-ck">
+<h2>Les 6 métriques CK<a class="headerlink" href="#les-6-metriques-ck" title="Link to this heading"></a></h2>
+<p>On illustre avec une classe <code class="docutils literal notranslate"><span class="pre">Personne</span></code> (attributs <code class="docutils literal notranslate"><span class="pre">nom</span></code>, <code class="docutils literal notranslate"><span class="pre">age</span></code> ; méthodes
+<code class="docutils literal notranslate"><span class="pre">setNom</span></code>, <code class="docutils literal notranslate"><span class="pre">setAge</span></code>, <code class="docutils literal notranslate"><span class="pre">getInfo</span></code>).</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14.0%" />
+<col style="width: 46.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Métrique</p></th>
+<th class="head"><p>Définition</p></th>
+<th class="head"><p>Sur l’exemple <code class="docutils literal notranslate"><span class="pre">Personne</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>WMC</strong> (Weighted Methods per Class)</p></td>
+<td><p>Complexité de la classe = somme pondérée (par McCabe) de ses méthodes</p></td>
+<td><p>WMC = 1 + 1 + 1 = <strong>3</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>DIT</strong> (Depth of Inheritance Tree)</p></td>
+<td><p>Profondeur de la classe dans l’arbre d’héritage (nb max d’ancêtres)</p></td>
+<td><p>DIT = <strong>0</strong> (pas de classe parente)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>NOC</strong> (Number of Children)</p></td>
+<td><p>Nombre de sous-classes <strong>directes</strong></p></td>
+<td><p>NOC = <strong>0</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>CBO</strong> (Coupling Between Objects)</p></td>
+<td><p>Nombre de classes couplées à la classe</p></td>
+<td><p>CBO = <strong>1</strong> si une classe <code class="docutils literal notranslate"><span class="pre">Adresse</span></code> lui est couplée</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>RFC</strong> (Response For a Class)</p></td>
+<td><p>Méthodes locales + méthodes appelées en réponse à un message</p></td>
+<td><p>RFC = <strong>3</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>LCOM</strong> (Lack of Cohesion in Methods)</p></td>
+<td><p>Manque de cohésion : (paires de méthodes non liées − paires liées) / 2</p></td>
+<td><p>(1 − 2)/2 = −0,5 ⇒ ramené à <strong>0</strong> (<code class="docutils literal notranslate"><span class="pre">max(0,</span> <span class="pre">LCOM)</span></code>)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Calcul de LCOM sur ``Personne``</strong> — paires : (setNom, setAge) → aucun attribut
+commun (non liées) ; (setNom, getInfo) → <code class="docutils literal notranslate"><span class="pre">nom</span></code> (liées) ; (setAge, getInfo) →
+<code class="docutils literal notranslate"><span class="pre">age</span></code> (liées). LCOM = (1 − 2)/2 = −0,5, ramené à 0.</p>
+</div>
+</section>
+<section id="interpreter-les-scores-et-agir">
+<h2>Interpréter les scores et agir<a class="headerlink" href="#interpreter-les-scores-et-agir" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 18.0%" />
+<col style="width: 14.0%" />
+<col style="width: 12.0%" />
+<col style="width: 12.0%" />
+<col style="width: 22.0%" />
+<col style="width: 22.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Métrique</p></th>
+<th class="head"><p>Faible/Normal</p></th>
+<th class="head"><p>Moyen</p></th>
+<th class="head"><p>Élevé</p></th>
+<th class="head"><p>Diagnostic</p></th>
+<th class="head"><p>Actions possibles</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>WMC</strong> (↔ McCabe)</p></td>
+<td><p>≤ 10</p></td>
+<td><p>11–20</p></td>
+<td><p>&gt; 20</p></td>
+<td><p>Structure trop complexe</p></td>
+<td><p>Refactoring (scinder, réécrire)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>DIT</strong></p></td>
+<td><p>≤ 2</p></td>
+<td><p>3–4</p></td>
+<td><p>&gt; 4</p></td>
+<td><p>Hiérarchie fragile</p></td>
+<td><p>Refactoring (composer)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>NOC</strong></p></td>
+<td><p>≤ 3</p></td>
+<td><p>4–6</p></td>
+<td><p>&gt; 6</p></td>
+<td><p>Classe mère instable</p></td>
+<td><p>Refactoring (abstraire)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>CBO</strong></p></td>
+<td><p>≤ 5</p></td>
+<td><p>6–10</p></td>
+<td><p>&gt; 10</p></td>
+<td><p>Couplage trop fort</p></td>
+<td><p>Refactoring (regrouper, scinder)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>RFC</strong></p></td>
+<td><p>≤ 20</p></td>
+<td><p>21–40</p></td>
+<td><p>&gt; 40</p></td>
+<td><p>Trop de responsabilités</p></td>
+<td><p>Refactoring (réécrire, scinder)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>LCOM</strong></p></td>
+<td><p>0</p></td>
+<td><p>&gt; 0</p></td>
+<td><p>≫ 0</p></td>
+<td><p>Faible cohésion</p></td>
+<td><p>Refactoring (scinder)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="avantages-limites-difficulte-d-utilisation">
+<h2>Avantages, limites, difficulté d’utilisation<a class="headerlink" href="#avantages-limites-difficulte-d-utilisation" title="Link to this heading"></a></h2>
+<p><strong>Avantages</strong> — identification des zones à risque ; orientation vers la qualité du
+code ; aide à la décision ; réduction de la complexité ; amélioration de la
+maintenance ; application généralisée.</p>
+<p><strong>Limites</strong></p>
+<ul class="simple">
+<li><p><strong>Sensibilité à la taille des classes</strong> : une grande classe peut sembler complexe même bien conçue ⇒ compléter par d’autres métriques.</p></li>
+<li><p><strong>Manque de contexte métier</strong> : elles évaluent la structure, pas les exigences spécifiques d’un domaine.</p></li>
+<li><p><strong>Focus structure plutôt que comportement</strong> : un code « bien noté » peut avoir des problèmes de performance/fonctionnalité à l’exécution ⇒ compléter par des tests fonctionnels et des mesures de performance.</p></li>
+</ul>
+<p><strong>Difficulté en pratique</strong> — elles nécessitent des informations détaillées sur la
+<strong>structure du code</strong>, difficiles à obtenir sur de grands projets.</p>
+</section>
+<section id="exercice">
+<h2>Exercice<a class="headerlink" href="#exercice" title="Link to this heading"></a></h2>
+<p>Soit un code source fourni :</p>
+<ol class="arabic simple">
+<li><p>Calculez les <strong>six métriques CK</strong> (pour chaque classe et au total).</p></li>
+<li><p>Interprétez les résultats (métriques les plus élevées et risques associés ; évaluation globale ; points d’attention).</p></li>
+<li><p>Pour chaque métrique élevée, proposez une solution (selon votre choix de classe).</p></li>
+</ol>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="chap5.html" class="btn btn-neutral float-left" title="Chapitre 5 : Point Fonction &amp; métriques de Bang (De Marco)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="chap7.html" class="btn btn-neutral float-right" title="Chapitre 7 : Cohésion &amp; couplage" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, John Aoga.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
