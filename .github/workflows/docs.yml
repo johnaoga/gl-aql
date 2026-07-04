@@ -86,7 +86,7 @@ jobs:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
     runs-on: ubuntu-latest
     concurrency:
-      group: pr-preview-${{ github.event.pull_request.number }}
+      group: ${{ format('pr-preview-{0}', github.event.pull_request.number) }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
