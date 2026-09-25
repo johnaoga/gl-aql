@@ -4,6 +4,9 @@
 Organisation du cours
 *********************
 
+.. note::
+   Si vous suivez ce cours actuellement, vous devez signer la charte d'utilisation de l'IA ici : https://forms.gle/TtNLyc4pNSYaANTX9
+
 L'objectif de ce cours est d'aborder la notion de **qualité** d'un logiciel et de
 voir comment **s'assurer** d'avoir un logiciel de qualité — en s'appuyant sur les
 normes et standards internationaux (**ISO/IEC 9126**), en appliquant des
